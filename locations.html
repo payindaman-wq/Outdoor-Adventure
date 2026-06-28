@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locations — Reno Outdoor Adventure</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="locations">
+
+  <nav>
+    <div class="nav-brand">Reno Outdoor Adventure</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="guide.html">Guide</a></li>
+      <li><a href="locations.html">Locations</a></li>
+      <li><a href="trips.html">Trip Log</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero" style="padding:2rem 1.5rem">
+    <h1>Prospecting Locations</h1>
+    <p>Public BLM land within 120 miles of Reno &mdash; verify claim status before every trip</p>
+  </div>
+
+  <main>
+
+    <div class="map-container">
+      <div id="locations-map"></div>
+    </div>
+
+    <div class="callout callout-warn" style="margin-bottom:1.5rem">
+      <strong>Before visiting any location:</strong> Run a claim check at
+      <a href="https://mlrs.blm.gov" target="_blank" rel="noopener">mlrs.blm.gov</a> and save a screenshot.
+      Mining claim status changes — what was open last month may have a new claim filed today.
+    </div>
+
+    <div class="filter-bar">
+      <div class="filter-group">
+        <label for="filter-difficulty">Difficulty</label>
+        <select id="filter-difficulty">
+          <option value="">All</option>
+          <option value="easy">Easy</option>
+          <option value="moderate">Moderate</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-distance">Max Distance</label>
+        <select id="filter-distance">
+          <option value="">Any distance</option>
+          <option value="30">30 mi or less</option>
+          <option value="60">60 mi or less</option>
+          <option value="90">90 mi or less</option>
+          <option value="120">120 mi or less</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-water">Water Type</label>
+        <select id="filter-water">
+          <option value="">All types</option>
+          <option value="river">River</option>
+          <option value="creek">Creek</option>
+          <option value="wash">Wash</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="cards-grid" id="locations-grid">
+      <div class="empty-state" style="grid-column:1/-1">Loading locations...</div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      Reno Outdoor Adventure &mdash; Always verify claim status before prospecting.
+      &nbsp;|&nbsp; <a href="https://mlrs.blm.gov" target="_blank" rel="noopener">BLM MLR Claim Checker</a>
+      &nbsp;|&nbsp; <a href="https://www.blm.gov/nevada" target="_blank" rel="noopener">BLM Nevada</a>
+    </p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

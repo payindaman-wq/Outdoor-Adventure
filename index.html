@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reno Outdoor Adventure</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="home">
+
+  <nav>
+    <div class="nav-brand">Reno Outdoor Adventure</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="guide.html">Guide</a></li>
+      <li><a href="locations.html">Locations</a></li>
+      <li><a href="trips.html">Trip Log</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>Reno Outdoor Adventure</h1>
+    <p>Gold prospecting and hiking within 120 miles of Reno, NV &mdash; legal, low-key, and set on public land</p>
+  </div>
+
+  <main>
+
+    <div class="stats-bar">
+      <div class="stat-card" id="stat-trips">
+        <span class="stat-value">—</span>
+        <span class="stat-label">Trips Taken</span>
+      </div>
+      <div class="stat-card" id="stat-miles">
+        <span class="stat-value">—</span>
+        <span class="stat-label">Miles Hiked</span>
+      </div>
+      <div class="stat-card" id="stat-locations">
+        <span class="stat-value">—</span>
+        <span class="stat-label">Known Locations</span>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Prospecting Range &mdash; 120 Miles from Reno</h2>
+    </div>
+    <p style="margin-bottom:1rem;color:var(--text-muted);font-size:0.9rem">
+      Orange circle = 120-mile range. Green dots = easy access. Orange dots = moderate.
+      All markers are on public BLM land &mdash; verify claim status before any trip.
+    </p>
+    <div class="map-container">
+      <div id="main-map"></div>
+    </div>
+
+    <div class="section-header" style="margin-top:2rem">
+      <h2>Recent Trips</h2>
+    </div>
+    <div class="cards-grid" id="recent-trips-grid">
+      <div class="empty-state" style="grid-column:1/-1">Loading...</div>
+    </div>
+
+    <div class="section-header" style="margin-top:2.5rem">
+      <h2>Quick Start</h2>
+    </div>
+    <div class="quicklink-grid">
+      <a href="guide.html#legal" style="text-decoration:none">
+        <div class="quicklink-card">
+          <h3>Staying Legal</h3>
+          <p>BLM land rules, how to check mining claims with MLRS, and what to avoid.</p>
+        </div>
+      </a>
+      <a href="guide.html#tools" style="text-decoration:none">
+        <div class="quicklink-card">
+          <h3>Starter Tool Kit</h3>
+          <p>Complete gear list for under $100 to start finding gold on day one.</p>
+        </div>
+      </a>
+      <a href="guide.html#technique" style="text-decoration:none">
+        <div class="quicklink-card">
+          <h3>Panning Technique</h3>
+          <p>Step-by-step process from classifying gravel to recovering flour gold.</p>
+        </div>
+      </a>
+      <a href="guide.html#reading-streams" style="text-decoration:none">
+        <div class="quicklink-card">
+          <h3>Reading Streams</h3>
+          <p>The physics of gold settlement and how to spot productive zones in any creek.</p>
+        </div>
+      </a>
+      <a href="guide.html#safety" style="text-decoration:none">
+        <div class="quicklink-card">
+          <h3>Safety &amp; Prep</h3>
+          <p>Desert heat, rattlesnakes, flash floods, and solo hiking protocols.</p>
+        </div>
+      </a>
+      <a href="guide.html#adding-trips" style="text-decoration:none">
+        <div class="quicklink-card">
+          <h3>Log a Trip</h3>
+          <p>How to add notes and photos after each adventure so nothing gets lost.</p>
+        </div>
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      Reno Outdoor Adventure &mdash; Always verify claim status before prospecting.
+      &nbsp;|&nbsp; <a href="https://mlrs.blm.gov" target="_blank" rel="noopener">BLM MLR Claim Checker</a>
+      &nbsp;|&nbsp; <a href="https://www.blm.gov/nevada" target="_blank" rel="noopener">BLM Nevada</a>
+    </p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

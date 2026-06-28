@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Log — Reno Outdoor Adventure</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="trips">
+
+  <nav>
+    <div class="nav-brand">Reno Outdoor Adventure</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="guide.html">Guide</a></li>
+      <li><a href="locations.html">Locations</a></li>
+      <li><a href="trips.html">Trip Log</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero" style="padding:2rem 1.5rem">
+    <h1>Trip Log</h1>
+    <p>Every adventure documented &mdash; notes, photos, and what the ground gave up</p>
+  </div>
+
+  <main>
+
+    <details style="background:var(--card);border-radius:8px;box-shadow:var(--shadow);padding:1rem 1.2rem;margin-bottom:1.5rem">
+      <summary style="cursor:pointer;font-weight:600;color:var(--forest);font-size:0.95rem">
+        How to add a trip after an adventure
+      </summary>
+      <div style="margin-top:1rem;font-size:0.88rem;line-height:1.7">
+        <ol style="margin-left:1.2rem">
+          <li>Create a folder: <code>photos/YYYY-MM-DD-location-name/</code></li>
+          <li>Drop your photos into that folder</li>
+          <li>Open <code>data/trips.json</code> and add a new entry to the <code>trips</code> array</li>
+          <li>Run: <code>git add data/trips.json photos/YYYY-MM-DD-location-name/ &amp;&amp; git commit -m "Trip: Location, date" &amp;&amp; git push</code></li>
+          <li>The site updates within 60 seconds</li>
+        </ol>
+        <p style="margin-top:0.75rem">
+          See <a href="guide.html#adding-trips">the full guide</a> for the complete JSON template.
+        </p>
+      </div>
+    </details>
+
+    <div class="cards-grid" id="trips-grid">
+      <div class="empty-state" style="grid-column:1/-1">Loading trips...</div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      Reno Outdoor Adventure &mdash; Always verify claim status before prospecting.
+      &nbsp;|&nbsp; <a href="https://mlrs.blm.gov" target="_blank" rel="noopener">BLM MLR Claim Checker</a>
+    </p>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
