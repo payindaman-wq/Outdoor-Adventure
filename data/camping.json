@@ -2,6 +2,56 @@
   "availability_checked": "2026-07-07",
   "campgrounds": [
     {
+      "id": "frenchman-lake-campground",
+      "name": "Frenchman Campground (Frenchman Lake)",
+      "coords": [39.8100, -120.1650],
+      "address": "Forest Road 178, Chilcoot, CA 96105 (Plumas National Forest)",
+      "distance_mi": 45,
+      "state": "CA",
+      "water_name": "Frenchman Lake",
+      "water_type": "lake",
+      "hookups": "none",
+      "max_rv_length_ft": 55,
+      "pull_through": false,
+      "site_count": 38,
+      "pet_friendly": true,
+      "pet_notes": "Standard USFS rules — leashed at all times",
+      "fishing": true,
+      "boat_launch": true,
+      "price_range": "$",
+      "phone": "(877) 444-6777",
+      "reservation_platform": "recreation.gov",
+      "reservation_url": "https://www.recreation.gov/camping/campgrounds/232137",
+      "adjacency_note": "Checked live Recreation.gov availability on 2026-07-07: 3 sites in the same FREN loop (013, 014, 017) are actually open for all of Aug 6-7-8 right now. Posted max vehicle lengths: site 013 = 40ft, site 014 = 35ft, site 017 = 55ft — enough spread to fit the motorhome, travel trailer, and cargo trailer between them, same loop, not touching. Book soon, these are individual sites and could go any time: site 013 (recreation.gov/camping/campsites/61141), site 014 (/campsites/61274), site 017 (/campsites/61410).",
+      "tags": ["lake", "budget", "dry-camping", "pine-covered", "boat-launch", "big-rig-friendly", "live-availability-confirmed"],
+      "notes": "Top pick for affordable + no hookups: $38/night, vault toilets, pine-covered hillside over a real lake (21 miles of shoreline, boating/fishing/swimming). No potable water on site in some years — bring your own to be safe. High desert/pine transition zone rather than deep forest, but sites themselves are described as wooded. This is the only campground in the whole list with confirmed real availability for your exact dates as of the check date."
+    },
+    {
+      "id": "prosser-family-campground",
+      "name": "Prosser Family Campground (Prosser Reservoir)",
+      "coords": [39.3583, -120.1594],
+      "address": "Prosser Dam Rd, Truckee, CA 96161 (Tahoe National Forest)",
+      "distance_mi": 33,
+      "state": "CA",
+      "water_name": "Prosser Reservoir",
+      "water_type": "lake",
+      "hookups": "none",
+      "max_rv_length_ft": 60,
+      "pull_through": false,
+      "site_count": 29,
+      "pet_friendly": true,
+      "pet_notes": "Standard USFS rules — leashed at all times",
+      "fishing": true,
+      "boat_launch": true,
+      "price_range": "$",
+      "phone": "(877) 444-6777",
+      "reservation_platform": "recreation.gov",
+      "reservation_url": "https://www.recreation.gov/camping/campgrounds/234210",
+      "adjacency_note": "Checked live Recreation.gov availability on 2026-07-07: plenty of sites open individually on Aug 6 (19) and Aug 7 (5), but zero sites are free for all of Aug 6-7-8 at once — Aug 8 (a Saturday) is fully booked across all 29 sites. Not bookable as a single 3-night stay right now; worth watching for cancellations or asking Recreation.gov support directly, or consider it if your dates could shift a day earlier.",
+      "tags": ["lake", "budget", "dry-camping", "sierra-pines", "boat-launch", "big-rig-friendly", "partial-availability"],
+      "notes": "Very affordable ($20/night + $5/extra vehicle) and sites accommodate up to 60ft, on a forested reservoir 10 minutes from Truckee. Good backup to Frenchman if those 3 sites get booked, but the Saturday-night gap is a real obstacle for your exact dates as of the check date."
+    },
+    {
       "id": "village-camp-truckee",
       "name": "Village Camp Truckee (formerly Coachland RV Park)",
       "coords": [39.3280, -120.1830],
@@ -21,9 +71,9 @@
       "phone": null,
       "reservation_platform": "private-phone-or-online",
       "reservation_url": "https://villagecamptruckee.com/",
-      "adjacency_note": "Sites don't need to touch — same loop/section is fine. No stated RV size restrictions, a safe bet for the 35ft motorhome. Private reservation system (not recreation.gov), so inventory isn't subject to the 6-month government booking rush — better odds a month out. Call to hold 3 sites near each other.",
-      "tags": ["lake-adjacent", "forested", "sierra-pines", "no-size-limit", "full-hookup", "scenic"],
-      "notes": "Wooded Truckee setting among pines, a short drive (not walk) from Donner Lake itself for swimming/fishing/boating. Cable TV and WiFi included. Top realistic pick given the booking timeline."
+      "adjacency_note": "Sites don't need to touch — same loop/section is fine. No stated RV size restrictions, a safe bet for the 35ft motorhome. Private reservation system (not recreation.gov), so inventory isn't subject to the 6-month government booking rush.",
+      "tags": ["lake-adjacent", "forested", "sierra-pines", "no-size-limit", "full-hookup", "pricier"],
+      "notes": "Pricier full-hookup option — keep in the list as a fallback if the budget dry-camping spots don't pan out, but not the primary pick anymore given the preference for no hookups and lower cost."
     },
     {
       "id": "plumas-pines-resort",
@@ -46,9 +96,9 @@
       "phone": "(530) 259-4343",
       "reservation_platform": "private-phone-or-online",
       "reservation_url": "https://www.plumaspinesresort.com/",
-      "adjacency_note": "Sites don't need to touch — 63 sites gives real flexibility to get 3 in the same area. Private booking system, not government-lottery timed, so a month out is a normal booking window rather than a long shot. $54-150/night depending on site.",
-      "tags": ["lake", "forested", "mixed-conifer", "boat-launch", "full-hookup", "200mi-radius"],
-      "notes": "Newly in range after expanding the search to 200 miles. Mixed conifer forest right on Lake Almanor (28,000-acre lake, real boating/swimming/fishing), 40ft max fits both big rigs, own marina on site. Furthest of the group at ~125 miles but comfortably inside 200. Skip Canyon Ranch RV Resort nearby — it's marketed as long-term/seasonal stays, not a good fit for a 3-night trip."
+      "adjacency_note": "Sites don't need to touch — 63 sites gives real flexibility. $54-150/night depending on site — pricier than the dry-camping options.",
+      "tags": ["lake", "forested", "mixed-conifer", "boat-launch", "full-hookup", "pricier", "200mi-radius"],
+      "notes": "Mixed conifer forest on Lake Almanor, 40ft max fits both big rigs. Kept as a fallback — full hookups push the price above what you're looking for now."
     },
     {
       "id": "zephyr-cove-resort",
@@ -72,9 +122,9 @@
       "phone": "(775) 589-4906",
       "reservation_platform": "recreation.gov",
       "reservation_url": "https://www.recreation.gov/camping/campgrounds/10300216",
-      "adjacency_note": "Checked live Recreation.gov availability on 2026-07-07: zero RV-electric sites (of 93) show all three nights of Aug 6-7-8 open at once — only 1-2 scattered single-night gaps. This campground runs on the federal 6-month booking window and August at Tahoe books out within minutes of release, so exact dates are effectively sold out already. Worth a call to ask about phone-held sites or a cancellation waitlist, but don't count on it. Later August (23rd+) had 15-20+ RV sites open per night if your dates have any flexibility.",
-      "tags": ["lake", "forested", "sierra-pines", "beach", "boat-launch", "full-hookup", "big-rig-friendly", "sold-out-current-dates"],
-      "notes": "The best setting of the group — genuine Jeffrey-pine forest a short walk from a Tahoe beach — but treat it as a long shot for Aug 6-9 given real-time availability. Keep as a stretch goal / cancellation watch, not the primary plan."
+      "adjacency_note": "Checked live Recreation.gov availability on 2026-07-07: zero RV-electric sites (of 93) show all three nights of Aug 6-7-8 open at once. Also the priciest option in the list.",
+      "tags": ["lake", "forested", "sierra-pines", "beach", "boat-launch", "full-hookup", "pricier", "sold-out-current-dates"],
+      "notes": "Nicest setting of the group but both sold out for these dates and the most expensive — no longer the top pick given the preference for affordable, no-hookup camping."
     },
     {
       "id": "gold-ranch-verdi",
@@ -96,9 +146,9 @@
       "phone": "(877) 914-6789",
       "reservation_platform": "private-phone",
       "reservation_url": "https://goldranchrvcasino.com/rv-resort/",
-      "adjacency_note": "Sites don't need to touch — same section is fine. Large resort with a mix of pull-through and back-in — call and ask for 3 sites near each other. Good odds with a few weeks' notice since it's privately booked.",
-      "tags": ["river", "close-to-reno", "casino-resort", "big-rig-friendly", "full-hookup"],
-      "notes": "River canyon setting with scattered cottonwoods and pines rather than dense forest — more valley/foothill than \"in the trees.\" Reliable fallback: closest full-hookup option (~12 miles) with real inventory a month out."
+      "adjacency_note": "Sites don't need to touch — same section is fine. Call and ask for 3 sites near each other.",
+      "tags": ["river", "close-to-reno", "casino-resort", "big-rig-friendly", "full-hookup", "pricier"],
+      "notes": "River canyon setting, more valley/foothill than forested. Last-resort fallback — closest option (~12 miles) but full hookups and casino-resort pricing, not what you're after now."
     },
     {
       "id": "river-west-resort-reno",
@@ -121,8 +171,8 @@
       "reservation_platform": "private-phone",
       "reservation_url": "https://www.riverwestresort.com/",
       "adjacency_note": "Small, established riverfront park close to downtown — call ahead since availability is tighter than the bigger resorts.",
-      "tags": ["river", "closest-to-reno", "big-rig-friendly", "full-hookup"],
-      "notes": "Riverfront park operating since 1927, about a mile from downtown Reno — urban/valley setting, not forested. Lowest-effort option if plans fall through last-minute, but not the tree-and-lake feel you're after."
+      "tags": ["river", "closest-to-reno", "big-rig-friendly", "full-hookup", "pricier"],
+      "notes": "Urban/valley setting, not forested, full hookup pricing. Only relevant as a last-minute emergency fallback."
     }
   ]
 }
