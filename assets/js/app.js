@@ -1,7 +1,6 @@
 // Reno Outdoor Adventure — app.js
 
 const RENO = [39.5296, -119.8138];
-const RADIUS_M = 120 * 1609.34;
 const LEAFLET_CDN = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const LEAFLET_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
@@ -16,8 +15,13 @@ async function loadTrips() {
   return (await r.json()).trips;
 }
 
+async function loadCamping() {
+  const r = await fetch('data/camping.json');
+  return (await r.json()).campgrounds;
+}
+
 // ── Map helpers ───────────────────────────────────────────────
-function baseMap(id, zoom = 8) {
+function baseMap(id, zoom = 8, radiusMi = 120) {
   const map = L.map(id).setView(RENO, zoom);
   L.tileLayer(LEAFLET_CDN, { attribution: LEAFLET_ATTR }).addTo(map);
 
@@ -31,9 +35,9 @@ function baseMap(id, zoom = 8) {
     })
   }).addTo(map).bindPopup('<strong>Reno, NV</strong><br>Your home base');
 
-  // 120-mile radius circle
+  // Radius circle
   L.circle(RENO, {
-    radius: RADIUS_M,
+    radius: radiusMi * 1609.34,
     color: '#c9933a',
     fillColor: '#c9933a',
     fillOpacity: 0.045,
@@ -88,6 +92,51 @@ function placeMarkers(map, locations, onClick) {
   });
 }
 
+function hookupColor(h) {
+  return h === 'full' ? '#2d6530' : h === 'partial' ? '#c9933a' : '#c0392b';
+}
+
+function campingMarkerIcon(hookups) {
+  const c = hookupColor(hookups);
+  return L.divIcon({
+    className: '',
+    html: `<div style="width:13px;height:13px;border-radius:50%;background:${c};border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.35)"></div>`,
+    iconSize: [13, 13],
+    iconAnchor: [6, 6]
+  });
+}
+
+function addCampingLegend(map) {
+  const legend = L.control({ position: 'bottomright' });
+  legend.onAdd = () => {
+    const div = L.DomUtil.create('div', 'map-legend');
+    div.innerHTML = `
+      <div class="legend-item"><div class="legend-dot" style="background:#2d6530"></div> Full hookups</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c9933a"></div> Partial (W/E)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c0392b"></div> Dry camping</div>
+      <div class="legend-item"><div class="legend-dot" style="background:white;border:2px solid #c9933a;width:16px;height:6px;border-radius:0"></div> 200-mi range</div>
+    `;
+    return div;
+  };
+  legend.addTo(map);
+}
+
+function placeCampingMarkers(map, campgrounds, onClick) {
+  campgrounds.forEach(cg => {
+    const m = L.marker(cg.coords, { icon: campingMarkerIcon(cg.hookups) }).addTo(map);
+    m.bindPopup(`
+      <strong>${cg.name}</strong><br>
+      <span style="color:#666;font-size:0.82em">${cg.state} &bull; ${cg.distance_mi} mi from Reno</span><br>
+      <span style="margin-top:4px;display:inline-block;padding:2px 7px;border-radius:3px;font-size:0.72em;font-weight:600;
+        background:${cg.hookups==='full'?'#d4edda':cg.hookups==='partial'?'#fff3cd':'#f8d7da'};
+        color:${cg.hookups==='full'?'#155724':cg.hookups==='partial'?'#7a5a00':'#721c24'}">
+        ${cg.hookups === 'full' ? 'full hookups' : cg.hookups === 'partial' ? 'water/electric' : 'dry camping'}
+      </span>
+    `);
+    if (onClick) m.on('click', () => onClick(cg));
+  });
+}
+
 // ── Renderers ─────────────────────────────────────────────────
 function fmtDate(s) {
   return new Date(s + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -122,6 +171,37 @@ function renderLocationCard(loc) {
         <div class="card-tags">${tags}</div>
       </div>
       <div class="card-footer">${loc.access_note}</div>
+    </div>
+  `;
+}
+
+const HOOKUP_LABELS = { full: 'Full hookups', partial: 'Water/electric', none: 'Dry camping' };
+
+function renderCampingCard(cg) {
+  const tags = (cg.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
+  const rvLimit = cg.max_rv_length_ft ? `Fits up to ${cg.max_rv_length_ft}ft` : 'No stated length limit';
+  const pet = cg.pet_friendly ? `<span class="tag">pet-friendly</span>` : '';
+  const boat = cg.boat_launch ? `<span class="tag">boat launch</span>` : '';
+  const fishing = cg.fishing ? `<span class="tag">fishing</span>` : '';
+  return `
+    <div class="card">
+      <div class="card-img-placeholder">No photo yet</div>
+      <div class="card-body">
+        <div class="card-title">${cg.name}</div>
+        <div class="card-meta">
+          <span>${cg.distance_mi} mi from Reno</span>
+          <span>${cg.state}</span>
+          <span>${rvLimit}</span>
+        </div>
+        <span class="badge badge-${cg.hookups}">${HOOKUP_LABELS[cg.hookups] || cg.hookups}</span>
+        <span class="tag" style="margin-left:0.4rem">${cg.water_type} &mdash; ${cg.water_name}</span>
+        <p class="card-notes" style="margin-top:0.75rem">${cg.notes}</p>
+        <p class="card-notes" style="margin-top:0.5rem"><strong>Adjacent sites:</strong> ${cg.adjacency_note}</p>
+        <div class="card-tags">${pet}${boat}${fishing}${tags}</div>
+      </div>
+      <div class="card-footer">
+        ${cg.phone ? `${cg.phone} &nbsp;|&nbsp; ` : ''}<a href="${cg.reservation_url}" target="_blank" rel="noopener">Reservations &rarr;</a>
+      </div>
     </div>
   `;
 }
@@ -240,6 +320,60 @@ async function initLocations() {
   });
 }
 
+// ── Page: Family Camping ─────────────────────────────────────
+async function initCamping() {
+  const campgrounds = await loadCamping();
+  const map = baseMap('camping-map', 7, 200);
+  addCampingLegend(map);
+
+  let filtered = [...campgrounds];
+
+  function render() {
+    document.getElementById('camping-grid').innerHTML = filtered.length
+      ? filtered.map(renderCampingCard).join('')
+      : `<div class="empty-state" style="grid-column:1/-1"><h3>No campgrounds match those filters</h3></div>`;
+    map.eachLayer(l => { if (l instanceof L.Marker) map.removeLayer(l); });
+    L.marker(RENO, { icon: L.divIcon({ className:'', html:'<div class="reno-dot">Reno</div>', iconSize:[46,20], iconAnchor:[23,10] }) })
+      .addTo(map).bindPopup('<strong>Reno, NV</strong><br>Home base');
+    placeCampingMarkers(map, filtered, cg => {
+      document.getElementById(cg.id)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
+
+  function renderAndTag() {
+    render();
+    document.querySelectorAll('#camping-grid .card').forEach((card, i) => {
+      if (filtered[i]) card.id = filtered[i].id;
+    });
+  }
+
+  renderAndTag();
+
+  document.getElementById('filter-hookups').addEventListener('change', e => {
+    const v = e.target.value;
+    filtered = v ? campgrounds.filter(c => c.hookups === v) : [...campgrounds];
+    renderAndTag();
+  });
+
+  document.getElementById('filter-camping-distance').addEventListener('change', e => {
+    const max = parseInt(e.target.value) || 999;
+    filtered = campgrounds.filter(c => c.distance_mi <= max);
+    renderAndTag();
+  });
+
+  document.getElementById('filter-camping-water').addEventListener('change', e => {
+    const v = e.target.value;
+    filtered = v ? campgrounds.filter(c => c.water_type === v) : [...campgrounds];
+    renderAndTag();
+  });
+
+  document.getElementById('filter-pet').addEventListener('change', e => {
+    const v = e.target.value;
+    filtered = v === 'yes' ? campgrounds.filter(c => c.pet_friendly) : [...campgrounds];
+    renderAndTag();
+  });
+}
+
 // ── Page: Trips ───────────────────────────────────────────────
 async function initTrips() {
   const trips = await loadTrips();
@@ -350,6 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const page = document.body.dataset.page;
   if (page === 'home')        initHome();
   if (page === 'locations')   initLocations();
+  if (page === 'camping')     initCamping();
   if (page === 'trips')       initTrips();
   if (page === 'trip-detail') initTripDetail();
 });

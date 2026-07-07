@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Camping — Reno Outdoor Adventure</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="camping">
+
+  <nav>
+    <div class="nav-brand">Reno Outdoor Adventure</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="guide.html">Guide</a></li>
+      <li><a href="locations.html">Locations</a></li>
+      <li><a href="camping.html">Family Camping</a></li>
+      <li><a href="trips.html">Trip Log</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero" style="padding:2rem 1.5rem">
+    <h1>Family Camping</h1>
+    <p>Established campgrounds within 200 miles of Reno that can host multiple rigs in the same area</p>
+  </div>
+
+  <main>
+
+    <div class="callout callout-gold">
+      <strong>Trip in planning: August 6&ndash;9, 2026</strong>
+      Three rigs need sites in the same campground &mdash; close together, but they don't need to touch:
+      <ul style="margin:0.5rem 0 0 1.2rem">
+        <li>The Green family &mdash; 35ft motorhome</li>
+        <li>Mom &amp; Dad &mdash; 32ft travel trailer</li>
+        <li>Chris &mdash; 12ft cargo trailer</li>
+      </ul>
+      <p style="margin-top:0.6rem">
+        River, creek, or lake all work. Full hookups preferred but not required &mdash; a great dry-camping spot
+        still works. Private RV resorts (own phone/online booking) are the realistic path a month out; USFS/state
+        campgrounds booked through Recreation.gov or ReserveCalifornia run on a 6-month advance-booking window and
+        August at Lake Tahoe sells out within minutes of release.
+      </p>
+      <p style="margin-top:0.6rem">
+        <strong>Live-checked 2026-07-07 on Recreation.gov:</strong> Zephyr Cove Resort has zero RV sites with all of
+        Aug 6&ndash;7&ndash;8 open at once (only scattered single-night gaps), and Nevada Beach Campground is fully
+        booked the entire month. Treat federal/state campgrounds as a cancellation-watch, not the primary plan &mdash;
+        <a href="https://www.recreation.gov/camping/campgrounds/10300216" target="_blank" rel="noopener">Zephyr Cove on Recreation.gov</a>
+        &nbsp;|&nbsp;
+        <a href="https://www.recreation.gov/camping/campgrounds/232768" target="_blank" rel="noopener">Nevada Beach on Recreation.gov</a>.
+        The private resorts below aren't subject to that rush and are the better bet.
+      </p>
+    </div>
+
+    <div class="map-container">
+      <div id="camping-map"></div>
+    </div>
+
+    <div class="filter-bar">
+      <div class="filter-group">
+        <label for="filter-hookups">Hookups</label>
+        <select id="filter-hookups">
+          <option value="">All</option>
+          <option value="full">Full</option>
+          <option value="partial">Partial (W/E)</option>
+          <option value="none">Dry camping</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-camping-distance">Max Distance</label>
+        <select id="filter-camping-distance">
+          <option value="">Any distance</option>
+          <option value="15">15 mi or less</option>
+          <option value="40">40 mi or less</option>
+          <option value="75">75 mi or less</option>
+          <option value="150">150 mi or less</option>
+          <option value="200">200 mi or less</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-camping-water">Water Type</label>
+        <select id="filter-camping-water">
+          <option value="">All types</option>
+          <option value="river">River</option>
+          <option value="lake">Lake</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-pet">Pet-Friendly</label>
+        <select id="filter-pet">
+          <option value="">All</option>
+          <option value="yes">Pet-friendly only</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="cards-grid" id="camping-grid">
+      <div class="empty-state" style="grid-column:1/-1">Loading campgrounds...</div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      Reno Outdoor Adventure &mdash; Family Camping is informational only, always confirm rig length limits,
+      hookup availability, and adjacent-site placement directly with the campground before booking.
+    </p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

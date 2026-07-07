@@ -120,9 +120,10 @@ main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
   margin: 0 0 1.5rem;
   border: 2px solid var(--gold);
 }
-#main-map, #locations-map, #trip-map { width: 100%; }
+#main-map, #locations-map, #camping-map, #trip-map { width: 100%; }
 #main-map { height: 440px; }
 #locations-map { height: 380px; }
+#camping-map { height: 380px; }
 #trip-map { height: 260px; }
 
 .reno-dot {
@@ -209,6 +210,9 @@ main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
 .badge-easy    { background: #d4edda; color: #155724; }
 .badge-moderate { background: #fff3cd; color: #7a5a00; }
 .badge-hard    { background: #f8d7da; color: #721c24; }
+.badge-full    { background: #d4edda; color: #155724; }
+.badge-partial { background: #fff3cd; color: #7a5a00; }
+.badge-none    { background: #f8d7da; color: #721c24; }
 
 .tag {
   background: #e8f0e8;
@@ -503,6 +507,7 @@ footer a { color: var(--gold); }
   .guide-sidebar { display: none; }
   #main-map { height: 320px; }
   #locations-map { height: 280px; }
+  #camping-map { height: 280px; }
   .trip-detail-stats { gap: 1rem; }
   .photo-gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
   main { padding: 1.25rem 1rem 2.5rem; }
